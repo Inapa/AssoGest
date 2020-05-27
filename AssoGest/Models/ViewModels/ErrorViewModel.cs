@@ -1,6 +1,6 @@
 using System;
 
-namespace AssoGest.Models
+namespace AssoGest.Models.ViewModels
 {
     public class ErrorViewModel
     {
