@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
+using AssoGest.Data;
 
 namespace AssoGest
 {
@@ -33,6 +35,12 @@ namespace AssoGest
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddDbContext<AssoGestContext>(options =>
+                    options.UseMySql(Configuration.GetConnectionString("AssoGestContext")));
+
+            services.AddDbContext<AssoGestContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("AssoGestContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
